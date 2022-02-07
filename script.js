@@ -1,5 +1,8 @@
+var [WIDTH, HEIGHT] = [640, 480];
+var [MOVESPEED, FALLSPEED] = [5,5]
+
 var character;
-var collision
+var COLLISION;
 
 function setup() {
   createCanvas(400, 400);
@@ -9,7 +12,14 @@ function setup() {
 function draw() {
   background("#3BC7FA");
   rect(0, 350, 500, 55);
-  fill("red");
+
+  // set player collision
+  COLLISION = checkCollision();
 
   character.show();
+  character.move();
+}
+
+function checkCollision(){   
+  colliding = false;
 }
