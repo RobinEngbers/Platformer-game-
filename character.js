@@ -4,8 +4,8 @@ class Character {
     this.y = 330;
     this.w = 20;
     this.h = 20;
-    this.color = [0, 255, 0];
-
+    this.color = [255, 100, 0];
+    this.vy = 0
     this.halfWidth = this.w / 2;
     this.halfHeight = this.h / 2 ;
 
@@ -43,7 +43,8 @@ class Character {
   }
 
   show() {
-    rect(this.x, this.y, this.w, this.h);
     fill(this.color);
+    rect(this.x, this.y, this.w, this.h);
+    
   }
 }

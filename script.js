@@ -1,15 +1,19 @@
-var [WIDTH, HEIGHT] = [400, 400];
+var [WIDTH, HEIGHT] = [500, 400];
 var [MOVESPEED, FALLSPEED] = [5,5];
 
 var ground = new Block({x:0,   y:360, w:WIDTH, h:40,   color:[0,255,0]});
-
-var blocks = [ground];
+var block1 = new Block({x: 50, y: 330, w: 100, h: 30, color: [128,128,128]});
+var block2 = new Block({x: 175, y: 310, w: 20, h: 50, color: [128,128,128]});
+var block3 = new Block({x: 230, y: 250, w: 100, h: 20, color: [128,128,128]});
+var block4 = new Block({x: 370, y: 310, w: 100, h: 20, color: [128,128,128]});
+var block5 = new Block({x: 370, y: 170, w: 100, h: 20, color: [128,128,128]});
+var blocks = [ground,block1,block2,block3,block4,block5];
 
 var character;
 var COLLISION;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 400);
   character = new Character()
 }
 
