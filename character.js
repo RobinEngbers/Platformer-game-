@@ -33,6 +33,7 @@ class Character {
    gravity(){
     if(COLLISION != "bottom"){
       this.y += this.vy;
+      if(this.vy < 5)
       this.vy += 0.25;
     }
   }

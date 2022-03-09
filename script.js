@@ -10,6 +10,9 @@ var block5 = new Block({x: 370, y: 220, w: 100, h: 20, color: [128,128,128]});
 var end1 = new Block({x: 440, y: 185, w: 25, h: 35, color: [140,3,252]});
 var blocks = [ground,block1,block2,block3,block4,block5,end1];
 
+
+var collect = new Collectible({x:30,  y:300, w, h,}) 
+  
 var character;
 var COLLISION;
 
@@ -26,6 +29,9 @@ function draw() {
   COLLISION = checkCollision();
 
   blocks.forEach(b => b.draw());
+
+  text(character.vy, 10, 30);
+
 
   character.show();
   character.move()
