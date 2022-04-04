@@ -1,9 +1,15 @@
+let img
+
+function preload() {
+  img = loadImage("./geel.png")
+}
+
 class Character {
   constructor() {
     this.x = 20;
     this.y = 330;
-    this.w = 20;
-    this.h = 20;
+    this.w = 35;
+    this.h = 30;
     this.color = [255, 100, 0];
     this.vy = 0;
     this.vx = 5;
@@ -14,7 +20,6 @@ class Character {
     this.framesJumped = 0;
 
   } 
-
 
   move() {
     this.gravity();
@@ -39,8 +44,8 @@ class Character {
   }
 
   show() {
-    fill(this.color);
-    rect(this.x, this.y, this.w, this.h);
-    
+    // fill(this.color);
+    // rect(this.x, this.y, this.w, this.h);
+    image(img, this.x, this.y, this.w, this.h);
   }
 }
