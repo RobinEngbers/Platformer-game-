@@ -10,7 +10,7 @@ function level1(){
   var block3 = new Block({x: 230, y: 270, w: 100, h: 20, color: [128,128,128]});
   var block4 = new Block({x: 370, y: 310, w: 100, h: 20, color: [128,128,128]});
   var block5 = new Block({x: 370, y: 220, w: 100, h: 20, color: [128,128,128]});
-  var end1 = new Block({x: 440, y: 185, w: 25, h: 35, color: [140,3,252]});
+  var end1 = new End({x: 440, y: 185, w: 25, h: 35, color: [140,3,252]});
   
   var collect1 = new Collectible({x:90, y:310, w:10, h:10, color: "yellow"});
   var collect2 = new Collectible({x:270, y:250, w:10, h:10, color: "yellow"});
@@ -26,7 +26,8 @@ function level2(){
   var block2 = new Block({x: 470, y: 290, w: 30, h: 40, color: [128,128,128]});
   var block3 = new Block({x: 280, y: 270, w: 100, h: 20, color: [128,128,128]});
   var block4 = new Block({x: 280, y: 270, w: 100, h: 20, color: [128,128,128]});
-  blocks = [ground,block1,block2,block3,block4];
+  var block5 = new Block({x: 280, y: 240, w: 15, h: 50, color: [128,128,128]});
+  blocks = [ground,block1,block2,block3,block4,block5];
 }
 var character;
  var COLLISION;
@@ -39,10 +40,6 @@ function setup() {
 }
 
 function draw() {
-
-  if(score == 3){
-    level2();
-  }
   
   background("#3BC7FA");
   // rect(0, 350, 500, 55);
@@ -96,6 +93,9 @@ function checkCollision(){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
             }
+            if(score == 3 && block.constructor.name === "End"){
+              level2();
+            }
           }
           else {            
             character.y -= overlapY;
@@ -104,6 +104,9 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+            }
+            if(score == 3 && block.constructor.name === "End"){
+              level2();
             }
           }
         }
@@ -116,6 +119,9 @@ function checkCollision(){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
             }
+            if(score == 3 && block.constructor.name === "End"){
+              level2();
+            }
           }
           else {
             character.x -= overlapX;
@@ -124,6 +130,9 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+            }
+            if(score == 3 && block.constructor.name === "End"){
+              level2();
             }
           }
         }
