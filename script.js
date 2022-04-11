@@ -22,7 +22,11 @@ function level1(){
 
 function level2(){
   var ground = new Block({x:0,   y:360, w:WIDTH, h:40,   color:[0,255,0]});
-  
+  var block1 = new Block({x: 400, y: 330, w: 100, h: 30, color: [128,128,128]});
+  var block2 = new Block({x: 470, y: 290, w: 30, h: 40, color: [128,128,128]});
+  var block3 = new Block({x: 280, y: 270, w: 100, h: 20, color: [128,128,128]});
+  var block4 = new Block({x: 280, y: 270, w: 100, h: 20, color: [128,128,128]});
+  blocks = [ground,block1,block2,block3,block4];
 }
 var character;
  var COLLISION;
@@ -31,9 +35,15 @@ function setup() {
   createCanvas(500, 400);
   character = new Character();
   level1();
+
 }
 
 function draw() {
+
+  if(score == 3){
+    level2();
+  }
+  
   background("#3BC7FA");
   // rect(0, 350, 500, 55);
 
