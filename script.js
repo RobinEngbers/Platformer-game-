@@ -1,15 +1,14 @@
-var gameState;
 
-let score = 3;
+// function preload() {
+//   pling = loadSound("./DingSFX.mp3");
+// }
+
+let pling
+let score = 0;
 var [WIDTH, HEIGHT] = [500, 400];
 var [MOVESPEED, FALLSPEED] = [5,5];
 var blocks = [];
 
-function homescreen(){
-  clear()
-  text("Press enter to start.");
-  background("green");
-}
 
 function level1(){
   var ground = new Block({x:0,   y:360, w:WIDTH, h:40,   color:[0,255,0]});
@@ -93,20 +92,43 @@ function level4(){
   var block2 = new Block({x: 115, y: 290, w: 30, h: 40, color: [128,128,128]});
   var block3 = new Block({x: 165, y: 250, w: 30, h: 50, color: [128,128,128]});
   var block4 = new Block({x: 215, y: 200, w: 30, h: 70, color: [128,128,128]});
-  
   var block5 = new Block({x: 330, y: 270, w: 30, h: 20, color: [128,128,128]});
   var block6 = new Block({x: 450, y: 240, w: 30, h: 20, color: [128,128,128]});
   var block7 = new Block({x: 450, y: 185, w: 30, h: 20, color: [128,128,128]});
   var block8 = new Block({x: 450, y: 130, w: 30, h: 20, color: [128,128,128]});
-
-  
   var block9 = new Block({x: 300, y: 100, w: 100, h: 20, color: [128,128,128]});
   var block10 = new Block({x: 200, y: 130, w: 70, h: 20, color: [128,128,128]});
   var block11 = new Block({x: 50, y: 100, w: 100, h: 20, color: [128,128,128]});
 
-  blocks = [ground,block1,block2,block3,block4,block5,block6,block7,block8,block9,block10,block11]
+  var collect1 = new Collectible({x:340, y:250, w:10, h:10, color: "yellow"});
+  var collect2 = new Collectible({x:460, y:170, w:10, h:10, color: "yellow"});
+  var collect3= new Collectible({x:230, y:100, w:10, h:10, color: "yellow"});
+
+  var end = new End({x: 60, y: 65, w: 25, h: 35, color: [140,3,252]});
+  
+
+  blocks = [ground,block1,block2,block3,block4,block5,block6,block7,block8,block9,block10,block11,collect1,collect2,collect3,end];
 
 }
+
+function levelEnd(){
+  
+  background("green");
+  textSize(20);
+  textAlign(CENTER);
+  text("Congrats, you've beaten the game! :D", WIDTH/2, HEIGHT/2);
+
+  blocks = [background,text];
+}
+
+// function startGame(){
+//     background(0,255,0);
+//     textAlign(CENTER);
+//     textSize(20);
+//     text("CLICK TO START GAME", width/2,height/2);
+
+//     blocks = []
+//   }
 
 var character;
  var COLLISION;
@@ -114,16 +136,18 @@ var character;
 function setup() {
   createCanvas(500, 400);
   character = new Character();
-  gameState = 0;
+  pling = loadSound("./DingSFX.mp3");
 }
 
 function draw() {
-
+  if(score == 0){
+    level1();
+  }
 
   
-  if(score == 3){
-    level2();
-  }
+  // if(score == 12){
+  //   level4();
+  // }
     
   
   background("#3BC7FA");
@@ -178,6 +202,7 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+              pling.play();
             }
             if(score == 3 && block.constructor.name === "End"){
               level2();
@@ -187,6 +212,9 @@ function checkCollision(){
             }
             if(score == 12 && block.constructor.name === "End"){
               level4();
+            }
+            if(score == 15 && block.constructor.name === "End"){
+              levelEnd();
             }
             
           }
@@ -197,6 +225,7 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+              pling.play();
             }
             if(score == 3 && block.constructor.name === "End"){
               level2();
@@ -206,6 +235,9 @@ function checkCollision(){
             }
             if(score == 12 && block.constructor.name === "End"){
               level4();
+            }
+            if(score == 15 && block.constructor.name === "End"){
+              levelEnd();
             }
           }
         }
@@ -217,6 +249,7 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+              pling.play();
             }
             if(score == 3 && block.constructor.name === "End"){
               level2();
@@ -226,6 +259,9 @@ function checkCollision(){
             }
             if(score == 12 && block.constructor.name === "End"){
               level4();
+            }
+            if(score == 15 && block.constructor.name === "End"){
+              levelEnd();
             }
           }
           else {
@@ -235,6 +271,7 @@ function checkCollision(){
             if(block.constructor.name === "Collectible"){
               blocks.splice(blocks.indexOf(block), 1);
               score++;
+              pling.play();
             }
             if(score == 3 && block.constructor.name === "End"){
               level2();
@@ -244,6 +281,9 @@ function checkCollision(){
             }
             if(score == 12 && block.constructor.name === "End"){
               level4();
+            }
+            if(score == 15 && block.constructor.name === "End"){
+              levelEnd();
             }
           }
         }
